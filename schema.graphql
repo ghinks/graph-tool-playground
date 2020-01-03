@@ -1,0 +1,54 @@
+enum Breed {
+    WOLF
+    LAB
+}
+
+enum FelineBreed {
+	GINGER
+	TOM
+}
+
+type Dog {
+    name: String
+}
+
+type Query{
+    hello(arg1: String): String,
+    bye: String
+    theDog: Dog
+		canine: WoofWoof
+		animals: [Animal]
+}
+
+type Mutation {
+    greeting(expression: String): String
+}
+
+interface Creature {
+	vertibrate: Boolean
+}
+
+interface Canine {
+	breed: Breed
+	dog: Dog	
+}
+
+interface Feline {
+	breed: FelineBreed
+	eyes: String
+}
+
+type MeowMeow implements Feline & Creature {
+	breed: FelineBreed
+	eyes: String
+	vertibrate: Boolean
+}
+
+type WoofWoof implements Canine & Creature {
+	breed: Breed
+	dog: Dog	
+	other: String
+	vertibrate: Boolean
+}
+
+union Animal = WoofWoof | MeowMeow
